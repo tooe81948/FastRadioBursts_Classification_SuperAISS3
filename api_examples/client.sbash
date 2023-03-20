@@ -1,0 +1,12 @@
+#!/bin/bash -l
+#SBATCH -p memory #specify partition
+#SBATCH -N 1 #specify number of nodes
+#SBATCH -t 18:00:00 #job time limit <hr:min:sec>
+#SBATCH -A lt900001
+#SBATCH -J wheeeeeee
+
+module purge
+module load Miniconda3/22.11.1-1
+conda activate 
+
+python /home/superai014/frb/api/http/final_client.py

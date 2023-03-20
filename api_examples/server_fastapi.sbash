@@ -1,0 +1,20 @@
+#!/bin/bash -l
+#SBATCH -p gpu #specify partition
+#SBATCH -N 1 #specify number of nodes
+#SBATCH --gpus-per-task=1 #specify number of cpus
+#SBATCH -t 1:00:00 #job time limit <hr:min:sec>
+#SBATCH -A lt900011
+#SBATCH -J wheeeeeee
+
+# module purge
+# module load Miniconda3/22.11.1-1
+# conda activate 
+
+conda activate week08
+
+port=$(shuf -i 6000-9999 -n 1)
+node=$(hostname -s)
+
+echo -e "node:port - $node:$port"
+
+uvicorn frb_fastapi:app --host $node --port $port
